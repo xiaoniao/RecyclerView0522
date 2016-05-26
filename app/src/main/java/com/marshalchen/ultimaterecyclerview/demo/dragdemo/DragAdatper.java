@@ -10,7 +10,9 @@ import com.marshalchen.ultimaterecyclerview.dragsortadapter.DragSortAdapter;
 
 import java.util.List;
 
-
+/**
+ * 拖拽适配器
+ */
 public class DragAdatper extends DragSortAdapter<MainViewHolder> {
     private List<Integer> stringList;
 

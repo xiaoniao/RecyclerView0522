@@ -4,15 +4,15 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.marshalchen.ultimaterecyclerview.R;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 
 import java.security.SecureRandom;
 import java.util.List;
 
 
-public class sectionZeroAdapter extends easyRegularAdapter<String, itemCommonBinder> {
+public class SectionZeroAdapter extends EasyRegularAdapter<String, ItemCommonBinder> {
 
-    public sectionZeroAdapter(List<String> stringList) {
+    public SectionZeroAdapter(List<String> stringList) {
         super(stringList);
     }
 
@@ -23,22 +23,22 @@ public class sectionZeroAdapter extends easyRegularAdapter<String, itemCommonBin
      */
     @Override
     protected int getNormalLayoutResId() {
-        return itemCommonBinder.layout;
+        return ItemCommonBinder.layout;
     }
 
     @Override
-    protected itemCommonBinder newViewHolder(View view) {
-        return new itemCommonBinder(view, true);
+    protected ItemCommonBinder newViewHolder(View view) {
+        return new ItemCommonBinder(view, true);
     }
 
     @Override
-    public itemCommonBinder newFooterHolder(View view) {
-        return new itemCommonBinder(view, false);
+    public ItemCommonBinder newFooterHolder(View view) {
+        return new ItemCommonBinder(view, false);
     }
 
     @Override
-    public itemCommonBinder newHeaderHolder(View view) {
-        return new itemCommonBinder(view, false);
+    public ItemCommonBinder newHeaderHolder(View view) {
+        return new ItemCommonBinder(view, false);
     }
 
     public final void insertOne(String e) {
@@ -50,7 +50,7 @@ public class sectionZeroAdapter extends easyRegularAdapter<String, itemCommonBin
     }
 
     @Override
-    protected void withBindHolder(itemCommonBinder holder, String data, int position) {
+    protected void withBindHolder(ItemCommonBinder holder, String data, int position) {
         holder.textViewSample.setText(data + "just the sample data");
         holder.item_view.setBackgroundColor(Color.parseColor("#AAffffff"));
         SecureRandom imgGen = new SecureRandom();

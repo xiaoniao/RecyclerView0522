@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 
 import java.security.SecureRandom;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by hesk on 16/2/16.
  */
-public class sectionCommonAdapter extends easyRegularAdapter<String, itemCommonBinder> {
+public class sectionCommonAdapter extends EasyRegularAdapter<String, ItemCommonBinder> {
 
     /**
      * dynamic object to start
@@ -36,12 +36,12 @@ public class sectionCommonAdapter extends easyRegularAdapter<String, itemCommonB
      */
     @Override
     protected int getNormalLayoutResId() {
-        return itemCommonBinder.layout;
+        return ItemCommonBinder.layout;
     }
 
     @Override
-    protected itemCommonBinder newViewHolder(View view) {
-        return new itemCommonBinder(view, true);
+    protected ItemCommonBinder newViewHolder(View view) {
+        return new ItemCommonBinder(view, true);
     }
 
 
@@ -61,7 +61,7 @@ public class sectionCommonAdapter extends easyRegularAdapter<String, itemCommonB
     }
 
     @Override
-    protected void withBindHolder(itemCommonBinder holder, String data, int position) {
+    protected void withBindHolder(ItemCommonBinder holder, String data, int position) {
         char Firstletter = data.charAt(0);
         holder.textViewSample.setText(data);
         holder.item_view.setBackgroundColor(Color.parseColor("#AAffffff"));
@@ -161,12 +161,12 @@ public class sectionCommonAdapter extends easyRegularAdapter<String, itemCommonB
     }
 
     @Override
-    public itemCommonBinder newFooterHolder(View view) {
-        return new itemCommonBinder(view, false);
+    public ItemCommonBinder newFooterHolder(View view) {
+        return new ItemCommonBinder(view, false);
     }
 
     @Override
-    public itemCommonBinder newHeaderHolder(View view) {
-        return new itemCommonBinder(view, false);
+    public ItemCommonBinder newHeaderHolder(View view) {
+        return new ItemCommonBinder(view, false);
     }
 }

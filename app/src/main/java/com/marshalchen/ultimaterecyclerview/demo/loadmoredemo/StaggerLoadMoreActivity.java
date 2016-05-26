@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by hesk on 5/4/16.
  */
-public class StaggerLoadMoreActivity extends BasicFunctions {
+public class StaggerLoadMoreActivity extends BaseActivity {
 
     staggerAdapter simpleRecyclerViewAdapter = null;
 

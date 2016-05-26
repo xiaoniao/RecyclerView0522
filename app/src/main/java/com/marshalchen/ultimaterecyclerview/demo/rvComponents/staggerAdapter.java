@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.marshalchen.ultimaterecyclerview.R;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 
 import java.security.SecureRandom;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * 瀑布流适配器
  * Created by hesk on 5/4/16.
  */
-public class staggerAdapter extends easyRegularAdapter<String, itemStaggerCommonBinder> {
+public class staggerAdapter extends EasyRegularAdapter<String, itemStaggerCommonBinder> {
 
     public staggerAdapter(List<String> stringList) {
         super(stringList);

@@ -26,7 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.marshalchen.ultimaterecyclerview.R;
-import com.marshalchen.ultimaterecyclerview.demo.rvComponents.sectionZeroAdapter;
+import com.marshalchen.ultimaterecyclerview.demo.rvComponents.SectionZeroAdapter;
 
 import java.util.ArrayList;
 
@@ -106,7 +106,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }*/
 
     protected void setDummyData(RecyclerView recyclerView, int num) {
-        recyclerView.setAdapter(new sectionZeroAdapter(getDummyData(num)));
+        recyclerView.setAdapter(new SectionZeroAdapter(getDummyData(num)));
     }
 
     protected void setDummyData(RecyclerView recyclerView) {

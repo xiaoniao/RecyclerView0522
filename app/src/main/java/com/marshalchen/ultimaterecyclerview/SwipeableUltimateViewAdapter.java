@@ -3,7 +3,7 @@ package com.marshalchen.ultimaterecyclerview;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 import com.marshalchen.ultimaterecyclerview.swipe.SwipeItemManagerImpl;
 import com.marshalchen.ultimaterecyclerview.swipe.SwipeItemManagerInterface;
 import com.marshalchen.ultimaterecyclerview.swipe.SwipeLayout;
@@ -14,7 +14,7 @@ import java.util.List;
  * 滑动删除抽象适配器
  * An abstract adapter which can be extended for Recyclerview
  */
-public abstract class SwipeableUltimateViewAdapter<T> extends easyRegularAdapter<T, UltimateRecyclerviewViewHolder> implements SwipeItemManagerInterface {
+public abstract class SwipeableUltimateViewAdapter<T> extends EasyRegularAdapter<T, UltimateRecyclerviewViewHolder> implements SwipeItemManagerInterface {
 
     protected SwipeItemManagerImpl mItemManger = new SwipeItemManagerImpl(this);
 

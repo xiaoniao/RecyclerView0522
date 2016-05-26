@@ -14,7 +14,7 @@ import java.util.List;
  * Enhanced Google Admob implementation
  * Created by hesk on 20/5/15.
  */
-public abstract class AdmobAdapter<Adv extends ViewGroup, T, BINDHOLDER extends AdItemHolder> extends easyRegularAdapter<T, BINDHOLDER> {
+public abstract class AdmobAdapter<Adv extends ViewGroup, T, BINDHOLDER extends AdItemHolder> extends EasyRegularAdapter<T, BINDHOLDER> {
     public interface AdviewListener<Adv extends ViewGroup> {
         Adv onGenerateAdview();
     }

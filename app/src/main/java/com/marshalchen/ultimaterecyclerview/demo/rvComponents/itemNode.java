@@ -11,7 +11,7 @@ import com.marshalchen.ultimaterecyclerview.ui.timelineview.TimelineView;
  * 时间线 ViewHolder
  * Created by zJJ on 4/27/2016.
  */
-public class itemNode extends UltimateRecyclerviewViewHolder {
+public class ItemNode extends UltimateRecyclerviewViewHolder {
 
     public static final int layout = R.layout.item_node;
     public TimelineView mTimelineView;
@@ -22,7 +22,7 @@ public class itemNode extends UltimateRecyclerviewViewHolder {
      *
      * @param itemView the view context
      */
-    public itemNode(View itemView) {
+    public ItemNode(View itemView) {
         super(itemView);
         mTimelineView = (TimelineView) itemView.findViewById(R.id.time_marker);
         name = (TextView) itemView.findViewById(R.id.tx_name);

@@ -2,29 +2,31 @@ package com.marshalchen.ultimaterecyclerview.demo.loadmoredemo;
 
 import android.graphics.Color;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.demo.modules.SampleDataboxset;
-import com.marshalchen.ultimaterecyclerview.demo.rvComponents.sectionZeroAdapter;
-import com.marshalchen.ultimaterecyclerview.ui.emptyview.emptyViewOnShownListener;
+import com.marshalchen.ultimaterecyclerview.demo.rvComponents.SectionZeroAdapter;
+import com.marshalchen.ultimaterecyclerview.ui.emptyview.EmptyViewOnShownListener;
 
 import java.util.ArrayList;
 
 /**
  * Created by hesk on 25/2/16.
  */
-public class FinalEmptyViewDisplayActivity extends BasicFunctions implements emptyViewOnShownListener {
+public class FinalEmptyViewDisplayActivity extends BaseActivity implements EmptyViewOnShownListener {
 
-    private sectionZeroAdapter simpleRecyclerViewAdapter = null;
-    private Handler time_count = new Handler();
+    private SectionZeroAdapter simpleRecyclerViewAdapter = null;
+    private Handler handler = new Handler();
     private int time = 0;
 
     @Override
     protected void onLoadmore() {
-        time_count.postDelayed(new Runnable() {
+        Log.d("uuuu", "-----------load more-----------");
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 SampleDataboxset.insertMoreWhole(simpleRecyclerViewAdapter, 5);
@@ -34,7 +36,7 @@ public class FinalEmptyViewDisplayActivity extends BasicFunctions implements emp
 
     @Override
     protected void onFireRefresh() {
-        time_count.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 ultimateRecyclerView.setRefreshing(false);
@@ -44,24 +46,19 @@ public class FinalEmptyViewDisplayActivity extends BasicFunctions implements emp
 
     @Override
     protected void enableEmptyViewPolicy() {
-        //  ultimateRecyclerView.setEmptyView(R.layout.empty_view, UltimateRecyclerView.EMPTY_KEEP_HEADER_AND_LOARMORE);
-        //    ultimateRecyclerView.setEmptyView(R.layout.empty_view, UltimateRecyclerView.EMPTY_KEEP_HEADER);
         ultimateRecyclerView.setEmptyView(R.layout.empty_view_v2, UltimateRecyclerView.EMPTY_CLEAR_ALL, this);
     }
-
 
     @Override
     protected void doURV(UltimateRecyclerView urv) {
         ultimateRecyclerView.setHasFixedSize(false);
-        simpleRecyclerViewAdapter = new sectionZeroAdapter(new ArrayList<String>());
+        simpleRecyclerViewAdapter = new SectionZeroAdapter(new ArrayList<String>());
         configLinearLayoutManager(ultimateRecyclerView);
 
         enableEmptyViewPolicy();
         enableLoadMore();
-        ultimateRecyclerView.setRecylerViewBackgroundColor(Color.parseColor("#ff4fcccf"));
         enableRefresh();
-
-
+        ultimateRecyclerView.setRecylerViewBackgroundColor(Color.parseColor("#ff4fcccf"));
         ultimateRecyclerView.setAdapter(simpleRecyclerViewAdapter);
     }
 
@@ -82,7 +79,6 @@ public class FinalEmptyViewDisplayActivity extends BasicFunctions implements emp
         simpleRecyclerViewAdapter.removeAll();
         ultimateRecyclerView.showEmptyView();
         ultimateRecyclerView.disableLoadmore();
-
     }
 
     @Override

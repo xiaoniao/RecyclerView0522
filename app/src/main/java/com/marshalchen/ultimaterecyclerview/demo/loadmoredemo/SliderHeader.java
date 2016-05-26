@@ -15,16 +15,16 @@ import com.hkm.slider.TransformerL;
 import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.demo.modules.SampleDataboxset;
-import com.marshalchen.ultimaterecyclerview.demo.rvComponents.sectionZeroAdapter;
+import com.marshalchen.ultimaterecyclerview.demo.rvComponents.SectionZeroAdapter;
 
 import java.util.ArrayList;
 
 /**
  * Created by hesk on 18/3/16.
  */
-public class SliderHeader extends BasicFunctions implements BaseSliderView.OnSliderClickListener {
+public class SliderHeader extends BaseActivity implements BaseSliderView.OnSliderClickListener {
 
-    private sectionZeroAdapter simpleRecyclerViewAdapter = null;
+    private SectionZeroAdapter simpleRecyclerViewAdapter = null;
 
     @Override
     protected void onLoadmore() {
@@ -58,7 +58,7 @@ public class SliderHeader extends BasicFunctions implements BaseSliderView.OnSli
     @Override
     protected void doURV(UltimateRecyclerView urv) {
         ultimateRecyclerView.setHasFixedSize(false);
-        simpleRecyclerViewAdapter = new sectionZeroAdapter(new ArrayList<String>());
+        simpleRecyclerViewAdapter = new SectionZeroAdapter(new ArrayList<String>());
         configLinearLayoutManager(ultimateRecyclerView);
         enableParallaxHeader();
         enableEmptyViewPolicy();

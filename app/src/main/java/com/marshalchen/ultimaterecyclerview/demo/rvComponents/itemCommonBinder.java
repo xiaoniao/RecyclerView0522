@@ -14,7 +14,7 @@ import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
  * Created by hesk on 16/2/16.
  * this is the example holder for the simple adapter
  */
-public class itemCommonBinder extends UltimateRecyclerviewViewHolder {
+public class ItemCommonBinder extends UltimateRecyclerviewViewHolder {
     public static final int layout = R.layout.rv_item_linear;
     public TextView textViewSample;
     public ImageView imageViewSample;
@@ -27,7 +27,7 @@ public class itemCommonBinder extends UltimateRecyclerviewViewHolder {
      * @param itemView view binding
      * @param isItem   bool
      */
-    public itemCommonBinder(View itemView, boolean isItem) {
+    public ItemCommonBinder(View itemView, boolean isItem) {
         super(itemView);
 //            itemView.setOnTouchListener(new SwipeDismissTouchListener(itemView, null, new SwipeDismissTouchListener.DismissCallbacks() {
 //                @Override

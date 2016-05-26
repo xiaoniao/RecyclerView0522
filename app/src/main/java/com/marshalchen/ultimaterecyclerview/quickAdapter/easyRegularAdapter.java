@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
 import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
-import com.marshalchen.ultimaterecyclerview.dragsortadapter.DragSortAdapter;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -21,7 +18,7 @@ import java.util.List;
  * Created by hesk on 4/8/15.
  * integrated with efficient adapter
  */
-public abstract class easyRegularAdapter<T, BINDHOLDER extends UltimateRecyclerviewViewHolder> extends UltimateViewAdapter {
+public abstract class EasyRegularAdapter<T, BINDHOLDER extends UltimateRecyclerviewViewHolder> extends UltimateViewAdapter {
     protected List<T> source;
 
 
@@ -30,7 +27,7 @@ public abstract class easyRegularAdapter<T, BINDHOLDER extends UltimateRecyclerv
      *
      * @param list the list source
      */
-    public easyRegularAdapter(List<T> list) {
+    public EasyRegularAdapter(List<T> list) {
         source = list;
     }
 
@@ -40,7 +37,7 @@ public abstract class easyRegularAdapter<T, BINDHOLDER extends UltimateRecyclerv
      *
      * @param objects The objects to represent in the RecyclerView.
      */
-    public easyRegularAdapter(T... objects) {
+    public EasyRegularAdapter(T... objects) {
         this(new ArrayList<T>(Arrays.asList(objects)));
     }
 

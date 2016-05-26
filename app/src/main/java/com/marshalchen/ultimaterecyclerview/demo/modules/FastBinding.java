@@ -7,7 +7,7 @@ import android.support.annotation.IdRes;
 import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.demo.expandemo.TestExpandableRV;
 import com.marshalchen.ultimaterecyclerview.demo.griddemo.GridLayoutRVTest;
-import com.marshalchen.ultimaterecyclerview.demo.loadmoredemo.DebugLoadMoreActivity;
+import com.marshalchen.ultimaterecyclerview.demo.loadmoredemo.LoadMoreActivity;
 import com.marshalchen.ultimaterecyclerview.demo.loadmoredemo.PullToRefreshActivity;
 import com.marshalchen.ultimaterecyclerview.demo.loadmoredemo.SwipeListViewExampleActivity;
 import com.marshalchen.ultimaterecyclerview.demo.multiitemdemo.MultiViewTypesActivity;
@@ -21,7 +21,7 @@ public enum FastBinding {
     action_custom(R.id.action_custom, PullToRefreshActivity.class),
     scrollactivity(R.id.scrollactivity, ScrollObservablesActivity.class),
     swipe_and_drag(R.id.swipe_and_drag, SwipeListViewExampleActivity.class),
-    debug_load_more(R.id.debug_load_more, DebugLoadMoreActivity.class),
+    debug_load_more(R.id.debug_load_more, LoadMoreActivity.class),
     gridlayouttesting(R.id.gridlayoutperformance, GridLayoutRVTest.class),
     expandmenu(R.id.expandmenu, TestExpandableRV.class);
 

@@ -3,7 +3,7 @@ package com.marshalchen.ultimaterecyclerview.demo.rvComponents;
 import android.view.View;
 
 import com.marshalchen.ultimaterecyclerview.demo.modules.TimeLineModel;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 import com.marshalchen.ultimaterecyclerview.ui.timelineview.TimelineView;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * itemNode ViewHolder
  * Created by zJJ on 4/27/2016.
  */
-public class TimeLineAdapter extends easyRegularAdapter<TimeLineModel, itemNode> {
+public class TimeLineAdapter extends EasyRegularAdapter<TimeLineModel, ItemNode> {
 
     public TimeLineAdapter(List<TimeLineModel> feedList) {
         super(feedList);
@@ -23,18 +23,18 @@ public class TimeLineAdapter extends easyRegularAdapter<TimeLineModel, itemNode>
     // onCreateViewHolder 布局 layout id
     @Override
     protected int getNormalLayoutResId() {
-        return itemNode.layout;
+        return ItemNode.layout;
     }
 
     // onCreateViewHolder 创建 ViewHolder (一个继承 UltimateRecyclerviewViewHolder 的ViewHolder)
     @Override
-    protected itemNode newViewHolder(View view) {
-        return new itemNode(view);
+    protected ItemNode newViewHolder(View view) {
+        return new ItemNode(view);
     }
 
     // onBindViewHolder
     @Override
-    protected void withBindHolder(itemNode holder, TimeLineModel data, int position) {
+    protected void withBindHolder(ItemNode holder, TimeLineModel data, int position) {
         holder.name.setText("name：" + data.getName() + " age：" + data.getAge());
         holder.init(TimelineView.getTimeLineViewType(position, getItemCount()));
     }

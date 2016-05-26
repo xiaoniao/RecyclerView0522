@@ -2,10 +2,9 @@ package com.marshalchen.ultimaterecyclerview.layoutmanagers;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 
 import static com.marshalchen.ultimaterecyclerview.UltimateViewAdapter.VIEW_TYPES.FOOTER;
 import static com.marshalchen.ultimaterecyclerview.UltimateViewAdapter.VIEW_TYPES.HEADER;
@@ -22,15 +21,15 @@ public class ClassicSpanGridLayoutManager extends GridLayoutManager {
 
     protected int onGetSpeanSize(final int position) {
         if (mode == NEWSPAGE) {
-            if (mAdapter instanceof easyRegularAdapter) {
+            if (mAdapter instanceof EasyRegularAdapter) {
                 int itemtype = mAdapter.getItemViewType(position);
                 if (itemtype == FOOTER || itemtype == HEADER || position == 0) {
                     return getSpanCount();
                 }
             }
         } else if (mode == DEFAULT) {
-            if (mAdapter instanceof easyRegularAdapter) {
-                easyRegularAdapter sw = (easyRegularAdapter) mAdapter;
+            if (mAdapter instanceof EasyRegularAdapter) {
+                EasyRegularAdapter sw = (EasyRegularAdapter) mAdapter;
                 if (sw.getItemViewType(position) == FOOTER) {
                     return getSpanCount();
                 } else if (sw.getItemViewType(position) == HEADER) {
@@ -65,7 +64,7 @@ public class ClassicSpanGridLayoutManager extends GridLayoutManager {
         }
     };
 
-    public ClassicSpanGridLayoutManager(Context context, int spanCount, easyRegularAdapter mAdapter) {
+    public ClassicSpanGridLayoutManager(Context context, int spanCount, EasyRegularAdapter mAdapter) {
         super(context, spanCount);
         this.mAdapter = mAdapter;
         setSpanSizeLookup(m);
@@ -73,7 +72,7 @@ public class ClassicSpanGridLayoutManager extends GridLayoutManager {
 
 
     public ClassicSpanGridLayoutManager(Context context, int spanCount, int moded, int orientation,
-                                        easyRegularAdapter mAdapter) {
+                                        EasyRegularAdapter mAdapter) {
         super(context, spanCount, orientation, false);
         this.mAdapter = mAdapter;
         setSpanSizeLookup(m);
@@ -83,7 +82,7 @@ public class ClassicSpanGridLayoutManager extends GridLayoutManager {
     }
 
     public ClassicSpanGridLayoutManager(Context context, int spanCount, int moded,
-                                        easyRegularAdapter mAdapter) {
+                                        EasyRegularAdapter mAdapter) {
         super(context, spanCount);
         this.mAdapter = mAdapter;
         setSpanSizeLookup(m);

@@ -30,7 +30,7 @@ public class BiAdAdapterSwitcher<
         //The view holder
         B extends AdItemHolder,
         //THE regular adapter
-        EASY extends easyRegularAdapter<T, B>,
+        EASY extends EasyRegularAdapter<T, B>,
         //THE Viewgroup from the google Adview
         V extends ViewGroup,
         //the admobdapter

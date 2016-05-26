@@ -14,13 +14,13 @@ import android.view.ViewGroup;
 import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 
 
 /**
  * Created by hesk on 15/2/16.
  */
-public abstract class catelogGrid<adapter extends easyRegularAdapter, binder extends UltimateRecyclerviewViewHolder> extends paginator {
+public abstract class catelogGrid<adapter extends EasyRegularAdapter, binder extends UltimateRecyclerviewViewHolder> extends paginator {
     public static String TAG = "catelog";
     public UltimateRecyclerView listview_layout;
     protected GridLayoutManager mLayoutManager;

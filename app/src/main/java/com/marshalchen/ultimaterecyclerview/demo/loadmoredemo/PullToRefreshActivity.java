@@ -3,6 +3,7 @@ package com.marshalchen.ultimaterecyclerview.demo.loadmoredemo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +14,7 @@ import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.URLogs;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.demo.modules.FastBinding;
-import com.marshalchen.ultimaterecyclerview.demo.rvComponents.sectionZeroAdapter;
+import com.marshalchen.ultimaterecyclerview.demo.rvComponents.SectionZeroAdapter;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -24,11 +25,9 @@ import in.srain.cube.views.ptr.header.StoreHouseHeader;
 import in.srain.cube.views.ptr.indicator.PtrIndicator;
 
 
-public class PullToRefreshActivity extends BasicFunctions implements ActionMode.Callback {
+public class PullToRefreshActivity extends BaseActivity2 implements ActionMode.Callback {
 
-    private CustomUltimateRecyclerview ultimateRecyclerView;
-    private sectionZeroAdapter simpleRecyclerViewAdapter = null;
-    private View floatingButton = null;
+    private SectionZeroAdapter simpleRecyclerViewAdapter = null;
 
     @Override
     protected void onLoadmore() {
@@ -38,7 +37,6 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
     @Override
     protected void onFireRefresh() {
         simpleRecyclerViewAdapter.insertLast("Refresh things");
-        //   ultimateRecyclerView.scrollBy(0, -50);
         linearLayoutManager.scrollToPosition(0);
         ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
         changeHeaderHandler.sendEmptyMessageDelayed(0, 500);
@@ -56,20 +54,15 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ultimateRecyclerView = (CustomUltimateRecyclerview) findViewById(R.id.custom_ultimate_recycler_view);
         super.onCreate(savedInstanceState);
         ultimateRecyclerView.setCustomSwipeToRefresh();
         // refreshingMaterial();
         refreshingString();
-
     }
 
     void refreshingString() {
         storeHouseHeader = new StoreHouseHeader(this);
-        //   header.setPadding(0, 15, 0, 0);
-
         storeHouseHeader.initWithString("XCode Big Air");
-        //  header.initWithStringArray(R.array.akta);
         ultimateRecyclerView.mPtrFrameLayout.removePtrUIHandler(materialHeader);
         ultimateRecyclerView.mPtrFrameLayout.setHeaderView(storeHouseHeader);
         ultimateRecyclerView.mPtrFrameLayout.addPtrUIHandler(storeHouseHeader);
@@ -91,9 +84,7 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
                 }, 1800);
             }
         });
-
     }
-
 
 //    void refreshingRental() {
 //        rentalsSunHeaderView = new RentalsSunHeaderView(this);
@@ -272,8 +263,6 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-
     }
 
     public int getScreenHeight() {
@@ -287,10 +276,8 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
 
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        URLogs.d("actionmode---" + (mode == null));
         mode.getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-        //  return false;
     }
 
     /**
@@ -307,18 +294,15 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
         return false;
     }
 
-
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         return false;
     }
 
-
     @Override
     public void onDestroyActionMode(ActionMode mode) {
         this.actionMode = null;
     }
-
 
     //
     @Override
@@ -333,49 +317,5 @@ public class PullToRefreshActivity extends BasicFunctions implements ActionMode.
         FastBinding.startactivity(this, item.getItemId());
         return super.onOptionsItemSelected(item);
     }
-
-/*
-
-    enum Type {
-        FadeIn("FadeIn", new FadeInAnimator()),
-        FadeInDown("FadeInDown", new FadeInDownAnimator()),
-        FadeInUp("FadeInUp", new FadeInUpAnimator()),
-        FadeInLeft("FadeInLeft", new FadeInLeftAnimator()),
-        FadeInRight("FadeInRight", new FadeInRightAnimator()),
-        Landing("Landing", new LandingAnimator()),
-        ScaleIn("ScaleIn", new ScaleInAnimator()),
-        ScaleInTop("ScaleInTop", new ScaleInTopAnimator()),
-        ScaleInBottom("ScaleInBottom", new ScaleInBottomAnimator()),
-        ScaleInLeft("ScaleInLeft", new ScaleInLeftAnimator()),
-        ScaleInRight("ScaleInRight", new ScaleInRightAnimator()),
-        FlipInTopX("FlipInTopX", new FlipInTopXAnimator()),
-        FlipInBottomX("FlipInBottomX", new FlipInBottomXAnimator()),
-        FlipInLeftY("FlipInLeftY", new FlipInLeftYAnimator()),
-        FlipInRightY("FlipInRightY", new FlipInRightYAnimator()),
-        SlideInLeft("SlideInLeft", new SlideInLeftAnimator()),
-        SlideInRight("SlideInRight", new SlideInRightAnimator()),
-        SlideInDown("SlideInDown", new SlideInDownAnimator()),
-        SlideInUp("SlideInUp", new SlideInUpAnimator()),
-        OvershootInRight("OvershootInRight", new OvershootInRightAnimator()),
-        OvershootInLeft("OvershootInLeft", new OvershootInLeftAnimator());
-
-        private String mTitle;
-        private BaseItemAnimator mAnimator;
-
-        Type(String title, BaseItemAnimator animator) {
-            mTitle = title;
-            mAnimator = animator;
-        }
-
-        public BaseItemAnimator getAnimator() {
-            return mAnimator;
-        }
-
-        public String getTitle() {
-            return mTitle;
-        }
-    }
-*/
-
 
 }

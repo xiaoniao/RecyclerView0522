@@ -3,20 +3,19 @@ package com.marshalchen.ultimaterecyclerview;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.LayoutRes;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 
 import java.util.List;
 
 /**
  * Created by hesk on 27/1/16.
  */
-public abstract class UltimateGridLayoutAdapter<DATA, BINDER extends UltimateRecyclerviewViewHolder> extends easyRegularAdapter<DATA, BINDER> {
+public abstract class UltimateGridLayoutAdapter<DATA, BINDER extends UltimateRecyclerviewViewHolder> extends EasyRegularAdapter<DATA, BINDER> {
     private boolean mValid = true;
     private int span_columns;
 

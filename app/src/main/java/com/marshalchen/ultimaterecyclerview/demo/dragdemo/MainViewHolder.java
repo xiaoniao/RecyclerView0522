@@ -13,11 +13,9 @@ import com.marshalchen.ultimaterecyclerview.dragsortadapter.DragSortAdapter;
 import com.marshalchen.ultimaterecyclerview.dragsortadapter.NoForegroundShadowBuilder;
 
 /**
- * Created by liuzhuang on 16/5/22.
+ *
  */
-public class MainViewHolder extends DragSortAdapter.ViewHolder implements
-        View.OnClickListener, View.OnLongClickListener {
-
+public class MainViewHolder extends DragSortAdapter.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
     TextView textViewSample;
     ImageView imageViewSample;

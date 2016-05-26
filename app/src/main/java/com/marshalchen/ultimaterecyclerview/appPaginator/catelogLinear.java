@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 import com.marshalchen.ultimaterecyclerview.R;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
-import com.marshalchen.ultimaterecyclerview.quickAdapter.easyRegularAdapter;
+import com.marshalchen.ultimaterecyclerview.quickAdapter.EasyRegularAdapter;
 import com.marshalchen.ultimaterecyclerview.layoutmanagers.ScrollSmoothLineaerLayoutManager;
 
 /**
  * Created by hesk on 30/6/15.
  */
-public abstract class catelogLinear<adapter extends easyRegularAdapter, binder extends UltimateRecyclerviewViewHolder> extends paginator {
+public abstract class catelogLinear<adapter extends EasyRegularAdapter, binder extends UltimateRecyclerviewViewHolder> extends paginator {
     public static String TAG = "catelog";
     public final static String BRAND_NAME = "BrandName", SLUG = "slug", REQUEST_TYPE = "typerequest";
     public UltimateRecyclerView listview_layout;

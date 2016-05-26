@@ -31,7 +31,7 @@ import com.marshalchen.ultimaterecyclerview.swipe.SwipeItemManagerInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwipeListViewExampleActivity extends BasicFunctions {
+public class SwipeListViewExampleActivity extends BaseActivity {
     private SwipeAdapter adapter;
     private List<String> data;
     private ScrollSmoothLineaerLayoutManager mLayoutManager;
