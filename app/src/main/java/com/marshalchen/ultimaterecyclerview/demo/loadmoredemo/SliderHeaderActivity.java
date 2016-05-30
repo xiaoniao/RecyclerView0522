@@ -7,6 +7,7 @@ import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import com.hkm.slider.SliderLayout;
 import com.hkm.slider.SliderTypes.BaseSliderView;
@@ -20,9 +21,21 @@ import com.marshalchen.ultimaterecyclerview.demo.rvComponents.SectionZeroAdapter
 import java.util.ArrayList;
 
 /**
+ * 广告ViewPager
  * Created by hesk on 18/3/16.
  */
-public class SliderHeader extends BaseActivity implements BaseSliderView.OnSliderClickListener {
+public class SliderHeaderActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener {
+
+    String[] urls = {
+            "http://cs407831.userapi.com/v407831207/1906/oxoP6URjFtA.jpg",
+            "http://cs407831.userapi.com/v407831207/190e/2Sz9A774hUc.jpg",
+            "http://cs407831.userapi.com/v407831207/1916/Ua52RjnKqjk.jpg",
+            "http://cs407831.userapi.com/v407831207/190e/2Sz9A774hUc.jpg",
+            "http://cs407831.userapi.com/v407831207/1916/Ua52RjnKqjk.jpg",
+            "http://cs407831.userapi.com/v407831207/190e/2Sz9A774hUc.jpg",
+            "http://cs407831.userapi.com/v407831207/1916/Ua52RjnKqjk.jpg",
+            "http://cs407831.userapi.com/v407831207/191e/QEQE83Ok0lQ.jpg"
+    };
 
     private SectionZeroAdapter simpleRecyclerViewAdapter = null;
 
@@ -33,12 +46,8 @@ public class SliderHeader extends BaseActivity implements BaseSliderView.OnSlide
 
     @Override
     protected void onFireRefresh() {
-        // simpleRecyclerViewAdapter.insertLast(moreNum++ + "  Refresh things");
         ultimateRecyclerView.setRefreshing(false);
-        //   ultimateRecyclerView.scrollBy(0, -50);
         linearLayoutManager.scrollToPosition(0);
-        //ultimateRecyclerView.setAdapter(simpleRecyclerViewAdapter);
-        //simpleRecyclerViewAdapter.notifyDataSetChanged();
         simpleRecyclerViewAdapter.removeAll();
         ultimateRecyclerView.disableLoadmore();
         ultimateRecyclerView.showEmptyView();
@@ -63,17 +72,17 @@ public class SliderHeader extends BaseActivity implements BaseSliderView.OnSlide
         enableParallaxHeader();
         enableEmptyViewPolicy();
         enableLoadMore();
-        ultimateRecyclerView.setRecylerViewBackgroundColor(Color.parseColor("#ffff66ff"));
         enableRefresh();
-        // enableScrollControl();
-        // enableSwipe();
-        // enableItemClick();
+        ultimateRecyclerView.setRecylerViewBackgroundColor(Color.parseColor("#ffff66ff"));
         ultimateRecyclerView.setItemViewCacheSize(simpleRecyclerViewAdapter.getAdditionalItems());
         ultimateRecyclerView.setNormalHeader(initSlider(ultimateRecyclerView));
         ultimateRecyclerView.setAdapter(simpleRecyclerViewAdapter);
     }
 
 
+    /**
+     * 初始化广告
+     */
     private View initSlider(UltimateRecyclerView listview) {
         final View view = LayoutInflater.from(getApplication()).inflate(R.layout.list_item_header, null, false);
         final ViewTreeObserver vto = listview.getViewTreeObserver();
@@ -87,7 +96,8 @@ public class SliderHeader extends BaseActivity implements BaseSliderView.OnSlide
                 try {
                     sl.setOffscreenPageLimit(1);
                     sl.setSliderTransformDuration(500, new LinearOutSlowInInterpolator());
-                    sl.setPresetTransformer(TransformerL.Default);
+                    //sl.setPresetTransformer(TransformerL.Default);
+                    sl.setPresetTransformer(TransformerL.CubeIn);
                     sl.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
                     sl.getPagerIndicator().setDefaultIndicatorColor(R.color.accent, R.color.primaryDark);
                     sl.getPagerIndicator().setVisibility(View.GONE);
@@ -98,24 +108,8 @@ public class SliderHeader extends BaseActivity implements BaseSliderView.OnSlide
             }
         });
 
-
         return view;
     }
-
-
-    String[] urls = {
-            //   "http://pcdn.500px.net/35939982/127d53ceac436e2e17a11ea42bb2cd7719b9f1e1/4.jpg",
-            "http://cs407831.userapi.com/v4078f31207/18fe/4Tz8av5Hlvo.jpg",
-            //    special url with error
-            "http://cs407831.userapi.com/v407831207/1906/oxoP6URjFtA.jpg",
-            "http://cs407831.userapi.com/v407831207/190e/2Sz9A774hUc.jpg",
-            "http://cs407831.userapi.com/v407831207/1916/Ua52RjnKqjk.jpg",
-            "http://cs407831.userapi.com/v407831207/190e/2Sz9A774hUc.jpg",
-            "http://cs407831.userapi.com/v407831207/1916/Ua52RjnKqjk.jpg",
-            "http://cs407831.userapi.com/v407831207/190e/2Sz9A774hUc.jpg",
-            "http://cs407831.userapi.com/v407831207/1916/Ua52RjnKqjk.jpg",
-            "http://cs407831.userapi.com/v407831207/191e/QEQE83Ok0lQ.jpg"
-    };
 
 
     protected void setup_double_faces(final SliderLayout mslide) throws Exception {
@@ -136,6 +130,6 @@ public class SliderHeader extends BaseActivity implements BaseSliderView.OnSlide
 
     @Override
     public void onSliderClick(BaseSliderView coreSlider) {
-
+        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
     }
 }

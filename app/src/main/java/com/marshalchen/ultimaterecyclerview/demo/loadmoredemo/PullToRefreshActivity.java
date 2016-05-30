@@ -3,61 +3,63 @@ package com.marshalchen.ultimaterecyclerview.demo.loadmoredemo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-
-import com.marshalchen.ultimaterecyclerview.CustomUltimateRecyclerview;
+import com.marshalchen.ultimaterecyclerview.CustomUltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.R;
-import com.marshalchen.ultimaterecyclerview.URLogs;
-import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
-import com.marshalchen.ultimaterecyclerview.demo.modules.FastBinding;
 import com.marshalchen.ultimaterecyclerview.demo.rvComponents.SectionZeroAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.PtrUIHandler;
+import in.srain.cube.views.ptr.demo.ui.header.RentalsSunHeaderView;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import in.srain.cube.views.ptr.header.StoreHouseHeader;
 import in.srain.cube.views.ptr.indicator.PtrIndicator;
 
 
-public class PullToRefreshActivity extends BaseActivity2 implements ActionMode.Callback {
+/**
+ * iOS风格下拉刷新
+ */
+public class PullToRefreshActivity extends AppCompatActivity {
 
-    private SectionZeroAdapter simpleRecyclerViewAdapter = null;
-
-    @Override
-    protected void onLoadmore() {
-
-    }
-
-    @Override
-    protected void onFireRefresh() {
-        simpleRecyclerViewAdapter.insertLast("Refresh things");
-        linearLayoutManager.scrollToPosition(0);
-        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
-        changeHeaderHandler.sendEmptyMessageDelayed(0, 500);
-    }
-
-    @Override
-    protected void addButtonTrigger() {
-
-    }
-
-    @Override
-    protected void removeButtonTrigger() {
-
-    }
+    private Toolbar toolbar;
+    protected CustomUltimateRecyclerView ultimateRecyclerView;
+    private SectionZeroAdapter simpleRecyclerViewAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private RentalsSunHeaderView rentalsSunHeaderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.custom_refresh_activity);
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        ultimateRecyclerView = (CustomUltimateRecyclerView) findViewById(R.id.custom_ultimate_recycler_view);
+        linearLayoutManager = new LinearLayoutManager(this);
+        ultimateRecyclerView.setLayoutManager(linearLayoutManager);
+
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        simpleRecyclerViewAdapter = new SectionZeroAdapter(list);
+        ultimateRecyclerView.setAdapter(simpleRecyclerViewAdapter);
+
         ultimateRecyclerView.setCustomSwipeToRefresh();
-        // refreshingMaterial();
-        refreshingString();
+//        refreshingMaterial();
+//        refreshingString();
+        refreshingRental();
+//        refreshingStringArray();
     }
 
     void refreshingString() {
@@ -86,38 +88,48 @@ public class PullToRefreshActivity extends BaseActivity2 implements ActionMode.C
         });
     }
 
-//    void refreshingRental() {
-//        rentalsSunHeaderView = new RentalsSunHeaderView(this);
-//        rentalsSunHeaderView.setUp(ultimateRecyclerView.mPtrFrameLayout);
-//
-//        ultimateRecyclerView.mPtrFrameLayout.removePtrUIHandler(materialHeader);
-//        ultimateRecyclerView.mPtrFrameLayout.removePtrUIHandler(storeHouseHeader);
-//        ultimateRecyclerView.mPtrFrameLayout.setHeaderView(rentalsSunHeaderView);
-//        ultimateRecyclerView.mPtrFrameLayout.addPtrUIHandler(rentalsSunHeaderView);
-//        ultimateRecyclerView.mPtrFrameLayout.autoRefresh(false);
-//        ultimateRecyclerView.mPtrFrameLayout.setPtrHandler(new PtrHandler() {
-//            @Override
-//            public boolean checkCanDoRefresh(PtrFrameLayout ptrFrameLayout, View view, View view2) {
-//                boolean canbePullDown = PtrDefaultHandler.checkContentCanBePulledDown(ptrFrameLayout, view, view2);
-//                return canbePullDown;
-//            }
-//
-//            @Override
-//            public void onRefreshBegin(PtrFrameLayout ptrFrameLayout) {
-//                ptrFrameLayout.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        simpleRecyclerViewAdapter.insert("Refresh things", 0);
-//                        //   ultimateRecyclerView.scrollBy(0, -50);
-//                        linearLayoutManager.scrollToPosition(0);
-//                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
-//                        changeHeaderHandler.sendEmptyMessageDelayed(3, 500);
-//                    }
-//                }, 1800);
-//            }
-//        });
-//
-//    }
+
+    private void onFireRefresh() {
+        //下拉刷新
+        simpleRecyclerViewAdapter.insertLast("Refresh things");
+        linearLayoutManager.scrollToPosition(0);
+        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
+        changeHeaderHandler.sendEmptyMessageDelayed(0, 500);
+    }
+
+
+    void refreshingRental() {
+        rentalsSunHeaderView = new RentalsSunHeaderView(this);
+        rentalsSunHeaderView.setUp(ultimateRecyclerView.mPtrFrameLayout);
+
+        ultimateRecyclerView.mPtrFrameLayout.removePtrUIHandler(materialHeader);
+        ultimateRecyclerView.mPtrFrameLayout.removePtrUIHandler(storeHouseHeader);
+        ultimateRecyclerView.mPtrFrameLayout.setHeaderView(rentalsSunHeaderView);
+        ultimateRecyclerView.mPtrFrameLayout.addPtrUIHandler(rentalsSunHeaderView);
+        ultimateRecyclerView.mPtrFrameLayout.autoRefresh(false);
+        ultimateRecyclerView.mPtrFrameLayout.setPtrHandler(new PtrHandler() {
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout ptrFrameLayout, View view, View view2) {
+                boolean canbePullDown = PtrDefaultHandler.checkContentCanBePulledDown(ptrFrameLayout, view, view2);
+                return canbePullDown;
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout ptrFrameLayout) {
+                ptrFrameLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        simpleRecyclerViewAdapter.insertOne("Refresh things");
+                        //   ultimateRecyclerView.scrollBy(0, -50);
+                        linearLayoutManager.scrollToPosition(0);
+                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
+                        changeHeaderHandler.sendEmptyMessageDelayed(3, 500);
+                    }
+                }, 1800);
+            }
+        });
+
+    }
 
     void refreshingMaterial() {
         materialHeader = new MaterialHeader(this);
@@ -254,68 +266,4 @@ public class PullToRefreshActivity extends BaseActivity2 implements ActionMode.C
             }
         });
     }
-
-    private void toggleSelection(int position) {
-        simpleRecyclerViewAdapter.toggleSelection(position);
-        actionMode.setTitle("Selected " + "1");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    public int getScreenHeight() {
-        return findViewById(android.R.id.content).getHeight();
-    }
-
-    @Override
-    protected void doURV(UltimateRecyclerView urv) {
-
-    }
-
-    @Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        mode.getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    /**
-     * Called to refresh an action mode's action menu whenever it is invalidated.
-     *
-     * @param mode ActionMode being prepared
-     * @param menu Menu used to populate action buttons
-     * @return true if the menu or action mode was updated, false otherwise.
-     */
-    @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        // swipeToDismissTouchListener.setEnabled(false);
-        this.actionMode = mode;
-        return false;
-    }
-
-    @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        return false;
-    }
-
-    @Override
-    public void onDestroyActionMode(ActionMode mode) {
-        this.actionMode = null;
-    }
-
-    //
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        FastBinding.startactivity(this, item.getItemId());
-        return super.onOptionsItemSelected(item);
-    }
-
 }

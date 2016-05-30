@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
+ * Activity 枚举映射类
  * Created by hesk on 24/2/16.
  */
 public enum Route {
@@ -12,7 +13,7 @@ public enum Route {
     LOADLOADING_CUT("Stop loading", FirstPageCancelLoadMore.class),
     LOADMORE_TEST("No Header", NoHeaderLoadMoreActivity.class),
     FinalEmptyViewDisplayActivity("Empty View", FinalEmptyViewDisplayActivity.class),
-    SLIDER_HEADER("Header of Slider", SliderHeader.class),
+    SLIDER_HEADER("Header of Slider", SliderHeaderActivity.class),
     SWIPE_LIST("Swipe List View Example", SwipeListViewExampleActivity.class),
     LOADMORE_HEADER("Header Pallx", LoadMoreActivity.class),;
 

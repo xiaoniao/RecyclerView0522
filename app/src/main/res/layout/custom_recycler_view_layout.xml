@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <in.srain.cube.views.ptr.PtrFrameLayout
-        android:id="@+id/store_house_ptr_frame"
         xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/store_house_ptr_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#333333"
@@ -20,10 +20,10 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/ultimate_list"
-            android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
+            android:background="#ffffff"
+            android:scrollbars="vertical" />
 
     </in.srain.cube.views.ptr.PtrFrameLayout>
 
@@ -31,10 +31,10 @@
         android:id="@+id/defaultFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
         android:visibility="gone"
         fab:plusIconColor="#808080"
         fab:urv_fab_colorNormal="#ffffff" />
@@ -43,10 +43,10 @@
         android:id="@+id/floatingActionViewStub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
         android:visibility="gone" />
 
 
